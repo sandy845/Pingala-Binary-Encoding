@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Algorithm | Piṅgala Binary Encoding{% endblock %}
+
+{% block content %}
+<section id="algorithm" class="section-spacing container">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Algorithm</p>
+    <h2>Generation logic</h2>
+  </div>
+
+  <div class="algorithm-panel reveal">
+    <button id="toggleAlgorithmBtn" class="button secondary" aria-expanded="false">Show Algorithm</button>
+    <div id="algorithmCode" class="algorithm-code hidden" aria-live="polite">
+      <pre>INPUT n
+
+FOR each number from 0 to (2^n - 1):
+    Convert number to binary
+    Pad binary representation to n digits
+    Map:
+        0 → Short
+        1 → Long
+    Calculate decimal value
+    Display/store pattern
+END</pre>
+    </div>
+    <div class="algorithm-explanation">
+      <p>The algorithm iterates through all integers from 0 to 2^n - 1, converts each one to an n-bit binary string, maps each bit to a syllable class, and then computes its decimal value. This is a direct educational analogue of algorithmic generation in modern computing.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-spacing container">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Complexity Analysis</p>
+    <h2>Exponential growth</h2>
+  </div>
+
+  <div class="complexity-grid reveal">
+    <article class="metric-card">
+      <span>Patterns</span>
+      <strong>2^n</strong>
+    </article>
+    <article class="metric-card">
+      <span>Time</span>
+      <strong>O(n × 2^n)</strong>
+    </article>
+    <article class="metric-card">
+      <span>Space</span>
+      <strong>O(n × 2^n)</strong>
+    </article>
+  </div>
+
+  <div class="growth-list reveal">
+    <div class="growth-item"><span>n = 5</span><strong>32</strong></div>
+    <div class="growth-item"><span>n = 6</span><strong>64</strong></div>
+    <div class="growth-item"><span>n = 7</span><strong>128</strong></div>
+    <div class="growth-item"><span>n = 8</span><strong>256</strong></div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Generator | Piṅgala Binary Encoding{% endblock %}
+
+{% block content %}
+<section id="generator" class="section-spacing container">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Interactive Generator</p>
+    <h2>Binary Pattern Generator</h2>
+  </div>
+
+  <div class="generator-panel reveal">
+    <div class="form-wrap">
+      <label for="nInput">Number of positions / syllables</label>
+      <div class="input-row">
+        <input id="nInput" type="number" min="1" max="10" step="1" value="3" aria-describedby="nHelp" />
+        <button id="generateBtn" class="button primary">Generate Patterns</button>
+        <button id="clearBtn" class="button secondary">Clear</button>
+        <button id="randomBtn" class="button ghost">Random Example</button>
+      </div>
+      <p id="nHelp" class="helper-text">Please enter an integer between 1 and 10.</p>
+      <div id="formMessage" class="form-message" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="stats-grid reveal" id="statsGrid">
+    <article class="stat-card">
+      <span class="stat-label">Positions</span>
+      <strong id="statPositions">0</strong>
+    </article>
+    <article class="stat-card">
+      <span class="stat-label">Combinations</span>
+      <strong id="statCombinations">0</strong>
+    </article>
+    <article class="stat-card">
+      <span class="stat-label">Generated</span>
+      <strong id="statGenerated">0</strong>
+    </article>
+    <article class="stat-card">
+      <span class="stat-label">Digits per pattern</span>
+      <strong id="statDigits">0</strong>
+    </article>
+  </div>
+</section>
+
+<section class="section-spacing container">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Pattern Visualization</p>
+    <h2>Generated Combinations</h2>
+  </div>
+
+  <div class="toolbar reveal">
+    <div class="search-group">
+      <label for="searchInput">Search</label>
+      <input id="searchInput" type="text" placeholder="Search binary or syllables" />
+    </div>
+    <div class="filter-group">
+      <label for="zeroFilter">0s</label>
+      <select id="zeroFilter">
+        <option value="all">All</option>
+        <option value="0">0 zeros</option>
+        <option value="1">1 zero</option>
+        <option value="2">2 zeros</option>
+        <option value="3">3 zeros</option>
+        <option value="4">4 zeros</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="oneFilter">1s</label>
+      <select id="oneFilter">
+        <option value="all">All</option>
+        <option value="0">0 ones</option>
+        <option value="1">1 one</option>
+        <option value="2">2 ones</option>
+        <option value="3">3 ones</option>
+        <option value="4">4 ones</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="sortMode">Sort</label>
+      <select id="sortMode">
+        <option value="binary">Binary Value</option>
+        <option value="decimal">Decimal Value</option>
+      </select>
+    </div>
+    <button id="resetFiltersBtn" class="button secondary small">Reset Filters</button>
+  </div>
+
+  <div class="visible-count reveal">
+    <span id="visibleCountText">0 patterns visible</span>
+  </div>
+
+  <div id="patternGrid" class="pattern-grid reveal" aria-live="polite"></div>
+</section>
+
+<div id="patternModal" class="modal hidden" aria-hidden="true">
+  <div class="modal-backdrop" data-close="modal"></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" aria-label="Close pattern details">×</button>
+    <h3 id="modalTitle">Pattern Details</h3>
+    <div id="modalContent"></div>
+  </div>
+</div>
+{% endblock %}

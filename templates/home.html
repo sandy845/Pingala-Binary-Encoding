@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Piṅgala Binary Encoding{% endblock %}
+
+{% block content %}
+<section class="hero container section-spacing">
+  <div class="hero-content reveal">
+    <p class="eyebrow">IKS × Computer Science</p>
+    <h1>Piṅgala’s Chandaḥśāstra → Binary Encoding</h1>
+    <p class="hero-subtitle">Exploring an ancient Indian combinatorial tradition through a modern Computer Science perspective.</p>
+    <p class="hero-description">This project demonstrates a conceptual mapping between short and long syllable patterns described in Piṅgala’s Chandaḥśāstra and binary representations used in modern computing.</p>
+
+    <div class="mapping-inline">
+      <span class="map-badge short">SHORT → 0</span>
+      <span class="map-badge long">LONG → 1</span>
+    </div>
+
+    <div class="hero-actions">
+      <a href="{{ url_for('generator_page') }}" class="button primary">Explore Generator</a>
+      <a href="{{ url_for('concepts_page') }}" class="button secondary">Learn the Concept</a>
+    </div>
+  </div>
+
+  <div class="hero-visual reveal" aria-label="Animated binary visualization">
+    <div class="binary-window">
+      <div class="binary-header">
+        <span class="dot red"></span>
+        <span class="dot amber"></span>
+        <span class="dot green"></span>
+      </div>
+      <div class="binary-screen">
+        <div class="binary-row"><span>0</span><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span><span>1</span><span>0</span></div>
+        <div class="binary-row"><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span><span>0</span><span>1</span><span>1</span></div>
+        <div class="binary-row"><span>0</span><span>0</span><span>1</span><span>1</span><span>0</span><span>1</span><span>0</span><span>1</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-showcase container section-spacing">
+  <div class="section-heading reveal center-heading">
+    <p class="eyebrow">Why this matters</p>
+    <h2>Piṅgala’s logic still echoes in modern computation</h2>
+  </div>
+
+  <div class="highlight-grid reveal">
+    <article class="feature-card">
+      <span class="feature-number">01</span>
+      <h3>Combinatorial vision</h3>
+      <p>Piṅgala treated syllable choices as structured possibilities, not isolated sounds. His approach anticipates the idea of systematic enumeration.</p>
+    </article>
+
+    <article class="feature-card">
+      <span class="feature-number">02</span>
+      <h3>Binary analogy</h3>
+      <p>Each position has two states—short/long or 0/1—making the total number of patterns grow as a power of 2.</p>
+    </article>
+
+    <article class="feature-card">
+      <span class="feature-number">03</span>
+      <h3>Indian knowledge tradition</h3>
+      <p>This project frames ancient prosodic analysis through a respectful educational lens, connecting IKS to contemporary CS ideas.</p>
+    </article>
+  </div>
+</section>
+
+<section class="home-metrics container section-spacing">
+  <div class="section-heading reveal center-heading">
+    <p class="eyebrow">Pattern growth</p>
+    <h2>Every extra position doubles the possibilities</h2>
+  </div>
+
+  <div class="metric-grid reveal">
+    <div class="metric-card">
+      <span class="metric-label">n = 1</span>
+      <strong>2</strong>
+      <small>patterns</small>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">n = 2</span>
+      <strong>4</strong>
+      <small>patterns</small>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">n = 3</span>
+      <strong>8</strong>
+      <small>patterns</small>
+    </div>
+    <div class="metric-card">
+      <span class="metric-label">n = 4</span>
+      <strong>16</strong>
+      <small>patterns</small>
+    </div>
+  </div>
+</section>
+
+<section class="home-insight container section-spacing">
+  <div class="insight-copy reveal">
+    <p class="eyebrow">The basic idea</p>
+    <h2>From syllables to bits</h2>
+    <p>Each position has only two choices: short or long. As the number of positions grows, the total number of possible sequences follows the simple rule:</p>
+    <div class="formula-box">2<sup>n</sup></div>
+    <ul class="insight-list">
+      <li>Short syllable = 0</li>
+      <li>Long syllable = 1</li>
+      <li>Every new position doubles the combinations</li>
+    </ul>
+  </div>
+
+  <div class="insight-panel reveal" aria-label="Piṅgala pattern example panel">
+    <div class="mini-window">
+      <div class="mini-header">
+        <span class="dot red"></span>
+        <span class="dot amber"></span>
+        <span class="dot green"></span>
+      </div>
+      <div class="mini-screen">
+        <div class="mini-row"><span>0</span><span>1</span><span>1</span></div>
+        <div class="mini-row"><span>1</span><span>0</span><span>0</span></div>
+        <div class="mini-row"><span>1</span><span>1</span><span>0</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

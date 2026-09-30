@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}History | Piṅgala Binary Encoding{% endblock %}
+
+{% block content %}
+<section id="history" class="section-spacing container">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Generation History</p>
+    <h2>Stored sessions</h2>
+  </div>
+
+  <div class="history-actions reveal">
+    <button id="refreshHistoryBtn" class="button secondary">Refresh History</button>
+    <button id="clearHistoryBtn" class="button danger">Clear All</button>
+  </div>
+
+  <div id="historyList" class="history-list reveal" aria-live="polite"></div>
+</section>
+{% endblock %}

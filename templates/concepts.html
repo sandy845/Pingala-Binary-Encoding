@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Concepts | Piṅgala Binary Encoding{% endblock %}
+
+{% block content %}
+<section class="section-spacing container">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Piṅgala Concept</p>
+    <h2>Historical concept and modern interpretation</h2>
+  </div>
+
+  <div class="concept-grid reveal">
+    <article class="info-card">
+      <h3>What is Chandaḥśāstra?</h3>
+      <p>Chandaḥśāstra is an ancient Sanskrit treatise concerned with poetic meters and prosody. Piṅgala’s work is closely associated with systematic study of syllable arrangements and combinatorial patterns.</p>
+    </article>
+    <article class="info-card">
+      <h3>Who was Piṅgala?</h3>
+      <p>Piṅgala is traditionally associated with an early combinatorial and prosodic tradition in Indian intellectual history. This project uses his name as a conceptual bridge between ancient Indian knowledge systems and modern computational thinking.</p>
+    </article>
+    <article class="info-card">
+      <h3>Short and long syllables</h3>
+      <p>In prosodic analysis, syllables are often distinguished as short and long. In this educational model, a short syllable is treated as 0 and a long syllable as 1.</p>
+    </article>
+    <article class="info-card">
+      <h3>Prastāra</h3>
+      <p>Prastāra refers to an ordered enumeration of patterns. This project uses the idea of systematic pattern listing to mirror the way a modern algorithm can generate all binary-like combinations.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section-spacing container">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Historical vs Modern</p>
+    <h2>Representation and interpretation</h2>
+  </div>
+
+  <div class="comparison-toggle reveal" aria-label="Representation toggle">
+    <button class="mode-btn active" data-mode="modern">Modern MSB-First Representation</button>
+    <button class="mode-btn" data-mode="historical">Historical / Prastāra-Inspired Alignment</button>
+  </div>
+
+  <div id="comparisonPanel" class="comparison-panel reveal">
+    <p class="comparison-copy"><strong>Modern MSB-First:</strong> Binary strings are displayed using the conventional modern representation where the leftmost position is the most significant bit.</p>
+  </div>
+</section>
+
+<section class="section-spacing container">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Conceptual Mapping</p>
+    <h2>IKS to Computer Science</h2>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table>
+      <thead>
+        <tr>
+          <th>IKS Concept</th>
+          <th>Computer Science Concept</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Short syllable</td><td>0</td></tr>
+        <tr><td>Long syllable</td><td>1</td></tr>
+        <tr><td>Sequence of syllables</td><td>Binary string</td></tr>
+        <tr><td>Pattern generation</td><td>Combinatorial generation</td></tr>
+        <tr><td>Number of positions</td><td>Input size</td></tr>
+        <tr><td>Possible patterns</td><td>2^n combinations</td></tr>
+        <tr><td>Pattern enumeration</td><td>Algorithmic generation</td></tr>
+        <tr><td>Pattern representation</td><td>Binary encoding</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

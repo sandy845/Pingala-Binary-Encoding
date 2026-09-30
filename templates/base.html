@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Piṅgala’s Chandaḥśāstra as Binary Encoding and Combinatorial Generation." />
+    <title>{% block title %}Piṅgala Binary Encoding{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <nav class="navbar container" aria-label="Main navigation">
+          <div class="brand-group">
+            <a href="{{ url_for('index') }}" class="brand">
+              <span class="brand-mark">π</span>
+              <span>Piṅgala</span>
+            </a>
+          </div>
+
+          <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div class="nav-links" id="navMenu">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('generator_page') }}">Generator</a>
+            <a href="{{ url_for('concepts_page') }}">Concept</a>
+            <a href="{{ url_for('algorithm_page') }}">Algorithm</a>
+            <a href="{{ url_for('test_cases_page') }}">Test Cases</a>
+            <a href="{{ url_for('history_page') }}">History</a>
+            <a href="{{ url_for('conclusion_page') }}">Conclusion</a>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark mode">
+              <span class="theme-icon">☀️</span>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        {% block content %}{% endblock %}
+      </main>
+
+      <footer class="footer">
+        <div class="container footer-inner">
+          <p>© 2026 Piṅgala Binary Encoding Project</p>
+          <p>Conceptual mapping for educational and academic understanding.</p>
+        </div>
+      </footer>
+    </div>
+
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/generator.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

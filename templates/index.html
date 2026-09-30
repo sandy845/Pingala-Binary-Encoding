@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Piṅgala’s Chandaḥśāstra as Binary Encoding and Combinatorial Generation."
+    />
+    <title>Piṅgala Binary Encoding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar" id="home">
+        <nav class="navbar container" aria-label="Main navigation">
+          <div class="brand-group">
+            <a href="#home" class="brand">
+              <span class="brand-mark">π</span>
+              <span>Piṅgala</span>
+            </a>
+          </div>
+
+          <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div class="nav-links" id="navMenu">
+            <a href="#home">Home</a>
+            <a href="#generator">Generator</a>
+            <a href="#concept">Concept</a>
+            <a href="#algorithm">Algorithm</a>
+            <a href="#test-cases">Test Cases</a>
+            <a href="#history">History</a>
+            <a href="#conclusion">Conclusion</a>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark mode">
+              <span class="theme-icon">☀️</span>
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero container section-spacing">
+          <div class="hero-content reveal">
+            <p class="eyebrow">IKS × Computer Science</p>
+            <h1>Piṅgala’s Chandaḥśāstra → Binary Encoding</h1>
+            <p class="hero-subtitle">
+              Exploring an ancient Indian combinatorial tradition through a modern Computer
+              Science perspective.
+            </p>
+            <p class="hero-description">
+              This project demonstrates a conceptual mapping between short and long syllable
+              patterns described in Piṅgala’s Chandaḥśāstra and binary representations used in
+              modern computing.
+            </p>
+
+            <div class="mapping-inline">
+              <span class="map-badge short">SHORT → 0</span>
+              <span class="map-badge long">LONG → 1</span>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#generator" class="button primary">Explore Generator</a>
+              <a href="#concept" class="button secondary">Learn the Concept</a>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal" aria-label="Animated binary visualization">
+            <div class="binary-window">
+              <div class="binary-header">
+                <span class="dot red"></span>
+                <span class="dot amber"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="binary-screen">
+                <div class="binary-row"><span>0</span><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span><span>1</span><span>0</span></div>
+                <div class="binary-row"><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span><span>0</span><span>1</span><span>1</span></div>
+                <div class="binary-row"><span>0</span><span>0</span><span>1</span><span>1</span><span>0</span><span>1</span><span>0</span><span>1</span></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="generator" class="section-spacing container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Interactive Generator</p>
+            <h2>Binary Pattern Generator</h2>
+          </div>
+
+          <div class="generator-panel reveal">
+            <div class="form-wrap">
+              <label for="nInput">Number of positions / syllables</label>
+              <div class="input-row">
+                <input id="nInput" type="number" min="1" max="10" step="1" value="3" aria-describedby="nHelp" />
+                <button id="generateBtn" class="button primary">Generate Patterns</button>
+                <button id="clearBtn" class="button secondary">Clear</button>
+                <button id="randomBtn" class="button ghost">Random Example</button>
+              </div>
+              <p id="nHelp" class="helper-text">Please enter an integer between 1 and 10.</p>
+              <div id="formMessage" class="form-message" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="stats-grid reveal" id="statsGrid">
+            <article class="stat-card">
+              <span class="stat-label">Positions</span>
+              <strong id="statPositions">0</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Combinations</span>
+              <strong id="statCombinations">0</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Generated</span>
+              <strong id="statGenerated">0</strong>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Digits per pattern</span>
+              <strong id="statDigits">0</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-spacing container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Pattern Visualization</p>
+            <h2>Generated Combinations</h2>
+          </div>
+
+          <div class="toolbar reveal">
+            <div class="search-group">
+              <label for="searchInput">Search</label>
+              <input id="searchInput" type="text" placeholder="Search binary or syllables" />
+            </div>
+            <div class="filter-group">
+              <label for="zeroFilter">0s</label>
+              <select id="zeroFilter">
+                <option value="all">All</option>
+                <option value="0">0 zeros</option>
+                <option value="1">1 zero</option>
+                <option value="2">2 zeros</option>
+                <option value="3">3 zeros</option>
+                <option value="4">4 zeros</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="oneFilter">1s</label>
+              <select id="oneFilter">
+                <option value="all">All</option>
+                <option value="0">0 ones</option>
+                <option value="1">1 one</option>
+                <option value="2">2 ones</option>
+                <option value="3">3 ones</option>
+                <option value="4">4 ones</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="sortMode">Sort</label>
+              <select id="sortMode">
+                <option value="binary">Binary Value</option>
+                <option value="decimal">Decimal Value</option>
+              </select>
+            </div>
+            <button id="resetFiltersBtn" class="button secondary small">Reset Filters</button>
+          </div>
+
+          <div class="visible-count reveal">
+            <span id="visibleCountText">0 patterns visible</span>
+          </div>
+
+          <div id="patternGrid" class="pattern-grid reveal" aria-live="polite"></div>
+        </section>
+
+        <section id="concept" class="section-spacing container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Piṅgala Concept</p>
+            <h2>Historical concept and modern interpretation</h2>
+          </div>
+
+          <div class="concept-grid reveal">
+            <article class="info-card">
+              <h3>What is Chandaḥśāstra?</h3>
+              <p>
+                Chandaḥśāstra is an ancient Sanskrit treatise concerned with poetic meters and
+                prosody. Piṅgala’s work is closely associated with systematic study of syllable
+                arrangements and combinatorial patterns.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Who was Piṅgala?</h3>
+              <p>
+                Piṅgala is traditionally associated with an early combinatorial and prosodic
+                tradition in Indian intellectual history. The project uses his name as a bridge
+                between ancient Indian knowledge systems and modern computational thinking.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Short and long syllables</h3>
+              <p>
+                In prosodic analysis, syllables are often distinguished as short and long. In this
+                educational model, a short syllable is treated as 0 and a long syllable as 1.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Prastāra</h3>
+              <p>
+                Prastāra refers to an ordered enumeration of patterns. This educational project uses
+                the idea of systematic pattern listing to mirror the way a modern algorithm can
+                generate all binary-like combinations.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="comparison" class="section-spacing container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Historical vs Modern</p>
+            <h2>Representation and interpretation</h2>
+          </div>
+
+          <div class="comparison-toggle reveal" aria-label="Representation toggle">
+            <button class="mode-btn active" data-mode="modern">Modern MSB-First Representation</button>
+            <button class="mode-btn" data-mode="historical">Historical / Prastāra-Inspired Alignment</button>
+          </div>
+
+          <div id="comparisonPanel" class="comparison-panel reveal">
+            <p class="comparison-copy">
+              <strong>Modern MSB-First:</strong> Binary strings are displayed using the conventional
+              modern representation where the leftmost position is the most significant bit.
+            </p>
+          </div>
+        </section>
+
+        <section id="mapping" class="section-spacing container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Conceptual Mapping</p>
+            <h2>IKS to Computer Science</h2>
+          </div>
+
+          <div class="table-wrap reveal">
+            <table>
+              <thead>
+                <tr>
+                  <th>IKS Concept</th>
+                  <th>Computer Science Concept</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Short syllable</td><td>0</td></tr>
+                <tr><td>Long syllable</td><td>1</td></tr>
+                <tr><td>Sequence of syllables</td><td>Binary string</td></tr>
+                <tr><td>Pattern generation</td><td>Combinatorial generation</td></tr>
+                <tr><td>Number of positions</td><td>Input size</td></tr>
+                <tr><td>Possible patterns</td><td>2^n combinations</td></tr>
+                <tr><td>Pattern enumeration</td><td>Algorithmic generation</td></tr>
+                <tr><td>Pattern representation</td><td>Binary encoding</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="algorithm" class="section-spacing container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Algorithm</p>
+            <h2>Generation logic</h2>
+          </div>
+
+          <div class="algorithm-panel reveal">
+            <button id="toggleAlgorithmBtn" class="button secondary" aria-expanded="false">
+              Show Algorithm
+            </button>
+            <div id="algorithmCode" class="algorithm-code hidden" aria-live="polite">
+              <pre>INPUT n
+
+FOR each number from 0 to (2^n - 1):
+    Convert number to binary
+    Pad binary representation to n digits
+    Map:
+        0 → Short
+        1 → Long
+    Calculate decimal value
+    Display/store pattern
+END</pre>
+            </div>
+            <div class="algorithm-explanation">
+              <p>
+                The algorithm iterates through all integers from 0 to $2^n-1$, converts each one to an
+                n-bit binary string, maps each bit to a syllable class, and then computes its decimal
+                value. This is a direct, educational analogue of algorithmic generation in modern
+                computing.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="complexity" class="section-spacing container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Complexity Analysis</p>
+            <h2>Exponential growth</h2>
+          </div>
+
+          <div class="complexity-grid reveal">
+            <article class="metric-card">
+              <span>Patterns</span>
+              <strong>2^n</strong>
+            </article>
+            <article class="metric-card">
+              <span>Time</span>
+              <strong>O(n × 2^n)</strong>
+            </article>
+            <article class="metric-card">
+              <span>Space</span>
+              <strong>O(n × 2^n)</strong>
+            </article>
+          </div>
+
+          <div class="growth-list reveal">
+            <div class="growth-item"><span>n = 5</span><strong>32</strong></div>
+            <div class="growth-item"><span>n = 6</span><strong>64</strong></div>
+            <div class="growth-item"><span>n = 7</span><strong>128</strong></div>
+            <div class="growth-item"><span>n = 8</span><strong>256</strong></div>
+          </div>
+        </section>
+
+        <section id="test-cases" class="section-spacing container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Test Cases</p>
+            <h2>Boundary and validation checks</h2>
+          </div>
+
+          <div class="table-wrap reveal">
+            <table>
+              <thead>
+                <tr>
+                  <th>Test Case ID</th>
+                  <th>Input</th>
+                  <th>Expected Output</th>
+                  <th>Actual Output</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="testCasesTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="history" class="section-spacing container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Generation History</p>
+            <h2>Stored sessions</h2>
+          </div>
+
+          <div class="history-actions reveal">
+            <button id="refreshHistoryBtn" class="button secondary">Refresh History</button>
+            <button id="clearHistoryBtn" class="button danger">Clear All</button>
+          </div>
+
+          <div id="historyList" class="history-list reveal" aria-live="polite"></div>
+        </section>
+
+        <section class="section-spacing container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Limitations</p>
+            <h2>Careful educational scope</h2>
+          </div>
+
+          <ul class="limitations-list reveal">
+            <li>The number of combinations grows exponentially.</li>
+            <li>Large n values generate many patterns.</li>
+            <li>The maximum n is intentionally limited.</li>
+            <li>This is a conceptual CS interpretation, not a claim of exact ancient notation.</li>
+            <li>Historical interpretation may require specialist scholarship.</li>
+          </ul>
+        </section>
+
+        <section id="conclusion" class="section-spacing container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Conclusion</p>
+            <h2>Bridging IKS and modern computation</h2>
+          </div>
+
+          <div class="conclusion-card reveal">
+            <p>
+              Piṅgala’s combinatorial tradition offers a fascinating intellectual bridge to modern
+              computer science. This project does not claim a literal identity between ancient prosody
+              and modern binary notation. Instead, it demonstrates how a conceptual mapping between
+              syllable states and binary digits can reveal a deeper underlying logic of systematic
+              enumeration, pattern generation, and algorithmic thinking.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container footer-inner">
+          <p>© 2026 Piṅgala Binary Encoding Project</p>
+          <p>Conceptual mapping for educational and academic understanding.</p>
+        </div>
+      </footer>
+    </div>
+
+    <div id="patternModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop" data-close="modal"></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" aria-label="Close pattern details">×</button>
+        <h3 id="modalTitle">Pattern Details</h3>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/generator.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

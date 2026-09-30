@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Test Cases | Piṅgala Binary Encoding{% endblock %}
+
+{% block content %}
+<section id="test-cases" class="section-spacing container">
+  <div class="section-heading reveal">
+    <p class="eyebrow">Test Cases</p>
+    <h2>Boundary and validation checks</h2>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table>
+      <thead>
+        <tr>
+          <th>Test Case ID</th>
+          <th>Input</th>
+          <th>Expected Output</th>
+          <th>Actual Output</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="testCasesTableBody"></tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

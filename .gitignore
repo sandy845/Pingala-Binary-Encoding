@@ -1,0 +1,7 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+pingala.db
+.pytest_cache/
+.vscode/
