@@ -5,3 +5,5 @@ __pycache__/
 pingala.db
 .pytest_cache/
 .vscode/
+_site/
+_site/

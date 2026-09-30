@@ -49,21 +49,26 @@ The application maps:
 ## Architecture
 
 - User → HTML/CSS/JS UI
-- JavaScript fetch() → Flask REST API
+- JavaScript fetch() → Flask REST API (local development)
 - Flask API → Python algorithm and SQLite database
 - SQLite → generation history data
 - JSON response → interactive UI
+- GitHub Pages build → static HTML and browser-local history
 
 ## Project Structure
 
 ```text
 pingala-binary-iks/
+├── .github/
+│   └── workflows/
+│       └── pages.yml
 ├── app.py
 ├── requirements.txt
 ├── README.md
-├── pingala.db
-├── templates/
-│   └── index.html
+├── scripts/
+│   └── build_pages.py
+├── database/
+│   └── database.py
 ├── static/
 │   ├── css/
 │   │   └── style.css
@@ -72,9 +77,15 @@ pingala-binary-iks/
 │       ├── generator.js
 │       ├── main.js
 │       └── ui.js
-├── database/
-│   └── database.py
-└── __pycache__/
+└── templates/
+    ├── base.html
+    ├── home.html
+    ├── generator.html
+    ├── concepts.html
+    ├── algorithm.html
+    ├── test_cases.html
+    ├── history.html
+    └── conclusion.html
 ```
 
 ## Installation
@@ -116,6 +127,20 @@ Then open:
 ```text
 http://127.0.0.1:5000/
 ```
+
+## Deploy to GitHub Pages
+
+The GitHub Actions workflow builds the Flask templates into a static site and deploys it from the `main` branch. In the repository settings, set **Pages → Build and deployment → Source** to **GitHub Actions**. Push to `main` or run the workflow manually from the Actions tab.
+
+GitHub Pages does not run Flask or SQLite. The deployed site's generator runs in the browser, and its history is saved in that browser's local storage. The Flask API and database remain available when running the application locally.
+
+To preview the Pages build locally, run:
+
+```bash
+python scripts/build_pages.py
+```
+
+Then serve the `_site` directory with any static file server. If the repository uses a custom base path, set `PAGES_BASE_PATH` before building.
 
 ## API Endpoints
 
